@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart IDS System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* General Body Style */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height:100%;
+            background: url('https://t4.ftcdn.net/jpg/03/58/10/87/240_F_358108785_rNJtmort9m65M3pft5swd7lnKJcTCB8u.jpg');
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Keeps the background fixed during scrolling */
+            background-color: #071126; /* Dark background */
+            color: #fff; /* White text for contrast */
+        }
+        .intro{
+            background: url('https://t4.ftcdn.net/jpg/03/58/10/87/240_F_358108785_rNJtmort9m65M3pft5swd7lnKJcTCB8u.jpg');
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+        }
+        /* Header Section */
+        header {
+            background: transparent; /* Ensure the header does not have its own background */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        header .nav-links a:hover {
+            text-decoration: underline;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+
+        /* Hero Section */
+        .hero {
+            padding: 0; /* No padding at the top */
+            margin: 0; /* No margin between header and hero */
+        }
+        .hero-section {
+            text-align: center;
+            padding: 50px;
+            background-image: url('cyber_bg.jpg'); /* Replace with IDS-themed image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 50px;
+            background-color: #0a1a38; /* Darker shade for distinction */
+        }
+
+        .features .feature {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent */
+            width: 30%; /* Flex-based cards */
+            color: white;
+        }
+
+        .features .feature img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        /* Data Insights Section */
+        .data-insights {
+            padding: 50px;
+            background-color: #071126; /* Light section for contrast */
+            color: white; /* Adjust text color for readability */
+        }
+
+        .data-insights h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .data-insights .charts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .data-insights .charts canvas {
+            max-width: 45%;
+            margin: 20px;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div style="display: flex; align-items: center;">
+            <!-- Logo -->
+            <img src="idslogo.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px; border: 2px solid #fff;">
+            <div class="logo">Smart IDS System</div>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="about.html">About </a>
+            <a href="#insights">Data Insights</a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="login1.html">Login</a>
+        </nav>
+    </header>
+    <!-- Scrolling Marquee Section -->
+<div style="background-color: #071126; padding: 10px;  position: relative; ">
+    <div style="white-space: nowrap; position: absolute; animation: marquee 10s linear infinite;">
+        <p style="display: inline-block; font-size: 1.5em; font-weight: bold; color: #ffc107; animation: marquee 10s linear infinite; padding-top: 20px;">
+            Welcome To Smart Intrusion Detection System
+        </p>
+    </div>
+</div>
+
+    <!-- Intro Section -->
+<div class="intro" style="display: flex; align-items: center; justify-content: center; padding: 50px; background-color: #071126; color: white;">
+    <!-- Text Content -->
+    <div style="flex: 1; " class="row">
+        <h1 style="color: #f5f4f3; font-size: 2.1em; font-weight: bold; margin-bottom: 10px;text-align:center; padding-bottom: 20px;">SMART INTRUSION DETECTION SYSTEM</h1>
+        <div class="col-md-6">
+            
+            <h1 style="color: #ffc107;font-size: 1.7em; font-weight: bold; margin-bottom: 20px; color: #ffc107;">KEEP YOUR NETWORK  SAFE AND SECURE</h1>
+            <p style="font-size: 1.1em; margin-bottom: 20px; line-height: 1.6;">
+            Discover the ultimate solution for securing your systems with our AI-powered Smart Intrusion Detection System. Designed for real-time threat prevention.The Smart Intrusion Detection System (Smart IDS) is an advanced security solution designed to protect networks and systems from unauthorized access, malicious activities, and potential cyber threats. By leveraging cutting-edge technologies like Artificial Intelligence (AI), Machine Learning (ML), and Big Data Analytics, Smart IDS offers unparalleled accuracy and efficiency in detecting and preventing intrusions.
+            </p>
+        <!-- Updated "Get Started" Button -->
+<button 
+id="getStartedBtn"
+style="background-color: #ffc107; color: #071126; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer;">
+Get Started
+</button>
+
+<script>
+// Simulating user login status using localStorage
+// For demonstration purposes; in a real application, use server-side authentication and session management
+const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+// Add event listener to "Get Started" button
+document.getElementById('getStartedBtn').addEventListener('click', function() {
+    if (isLoggedIn) {
+        // Redirect to prediction1.html if logged in
+        window.location.href = 'prediction1.html';
+    } else {
+        // Redirect to login_prompt.html if not logged in
+        window.location.href = 'login_prompt.html'; // This page should prompt the user to log in
+    }
+});
+</script>
+
+        
+    </div>
+
+    <!-- Image -->
+    <div style="flex: 1; display: flex; justify-content: center;" class="col-md-6">
+        <img src="mainids.jpeg" alt="Smart IDS Image" style="max-width: 100%; height: auto; border-radius: 10px;">
+    </div>
+    </div>
+</div>
+
+    <!-- Features Section -->
+     <!-- Features Section -->
+<section class="features" style="padding: 50px; background-color: #071126; color: white;">
+    <!-- Centered Heading -->
+    <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 40px; font-weight: bold;">Enhance Your Network Security</h2>
+
+    <!-- Feature Blocks -->
+    <div class="container">
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="feature text-center" 
+                    style="padding: 20px; width: 90%; height: 100%; border-radius: 10px; 
+                    background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="tpc.jpg" alt="AI Feature" style="max-width: 80px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">Threat Detection and Coverage</h3>
+                    <p style="font-size: 0.95em;">Identify and block potential threats in real-time with our intrusion detection software. Protect against a wide range of network attacks, including zero-day vulnerabilities.</p>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="feature text-center" 
+                    style="padding: 20px; width: 90%; height: 100%; border-radius: 10px; 
+                    background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="harm.png" alt="ML Feature" style="max-width: 80px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">Automated Protection and Integration</h3>
+                    <p style="font-size: 0.95em;">Automatically mitigate risks without manual intervention, improving efficiency. Seamlessly integrate with existing network infrastructure for maximum compatibility.</p>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="feature text-center" 
+                    style="padding: 20px; width: 90%; height: 100%; border-radius: 10px; 
+                    background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="api.png" alt="Data Analysis Feature" style="max-width: 80px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">High Accuracy and Real-Time Monitoring</h3>
+                    <p style="font-size: 0.95em;">Minimize false positives with advanced detection algorithms. Ensure continuous monitoring for instant threat response and 24/7 network protection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+
+    <!-- Data Insights Section -->
+   <!-- Data Insights Section -->
+<section id="insights" class="data-insights" style="padding: 50px; background-color: #071126; color: white;">
+    <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 40px; font-weight: bold;">Data Insights</h2>
+    <div class="container">
+        <div class="row">
+            <!-- Chart: Protocol Type -->
+            <div class="col-md-6 d-flex justify-content-center">
+                <div style="width: 90%; background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <h3 style="color: #ffc107; font-size: 1.5em; margin-bottom: 20px;">Protocol Type</h3>
+                    <canvas id="protocolChart" style="margin: 0 auto;"></canvas>
+                </div>
+            </div>
+            <!-- Chart: Attack Type -->
+            <div class="col-md-6 d-flex justify-content-center">
+                <div style="width: 90%; background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <h3 style="color: #ffc107; font-size: 1.5em; margin-bottom: 20px;">Attack Type</h3>
+                    <canvas id="attackChart" style="margin: 0 auto;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <!-- Table: Attack Type Count -->
+            <div class="col-md-6 d-flex justify-content-center">
+                <div style="width: 90%; background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <h3 style="color: #ffc107; font-size: 1.5em; margin-bottom: 20px;">Attack Type Count</h3>
+                    <table class="table table-striped" style="color: white; background-color: rgba(255, 255, 255, 0.05);">
+                        <thead>
+                            <tr style="color: #ffc107;">
+                                <th>Type</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DOS</td><td>391458</td></tr>
+                            <tr><td>Normal</td><td>97278</td></tr>
+                            <tr><td>Probe</td><td>4107</td></tr>
+                            <tr><td>R2L</td><td>1126</td></tr>
+                            <tr><td>U2R</td><td>52</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Table: Model Training and Testing Score -->
+            <div class="col-md-6 d-flex justify-content-center">
+                <div style="width: 90%; background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <h3 style="color: #ffc107; font-size: 1.5em; margin-bottom: 20px;">Model Training & Testing Score</h3>
+                    <table class="table table-striped" style="color: white; background-color: rgba(255, 255, 255, 0.05);">
+                        <thead>
+                            <tr style="color: #ffc107;">
+                                <th>Type</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Training</td><td>0.99996</td></tr>
+                            <tr><td>Testing</td><td>0.98966</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer style="background-color: #071126; color: white; padding: 10px; text-align: center;">
+        <p>&copy; 2025 Smart IDS System. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Protocol Chart
+        const protocolCtx = document.getElementById('protocolChart').getContext('2d');
+        new Chart(protocolCtx, {
+            type: 'bar',
+            data: {
+                labels: ['TCP', 'UDP', 'ICMP'],
+                datasets: [{
+                    label: 'Protocol Types',
+                    data: [25000, 15000, 10000],
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Change legend text color to white
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white' // Change x-axis labels to white
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'white' // Change y-axis labels and numbers to white
+                        }
+                    }
+                }
+            }
+        });
+
+
+        // Attack Chart
+        const attackCtx = document.getElementById('attackChart').getContext('2d');
+        new Chart(attackCtx, {
+            type: 'pie',
+            data: {
+                labels: ['DOS', 'Normal', 'Probe', 'R2L', 'U2R'],
+                    datasets: [{
+                        data: [391458, 97278, 4107, 1126, 52],
+                        backgroundColor: ['#dc3545', '#17a2b8', '#6c757d', '#fd7e14', '#20c997']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white' // Change legend text color to white
+                            }
+                        }
+                    }
+                }
+        });
+
+    </script>
+
+</body>
+</html>
