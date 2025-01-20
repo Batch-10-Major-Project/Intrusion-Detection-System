@@ -65,55 +65,39 @@
                         <h2>Hello, Again</h2>
                         <p>We are happy to have you back.</p>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
-                    </div>
-                    <div class="input-group mb-1">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
-                    </div>
-                    <div class="input-group mb-5 d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="formCheck">
-                            <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
+                    <form method="post" action="/user_administration/login/">
+                        <div class="input-group mb-3">
+                            <input name='username' type="text" class="form-control form-control-lg bg-light fs-6" placeholder="username" label="username">
                         </div>
-                        <div class="forgot">
-                            <small><a href="#">Forgot Password?</a></small>
+                        <div class="input-group mb-1">
+                            <input name='password' type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" label="password">
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
-                    </div>
+                        <div class="input-group mb-5 d-flex justify-content-between">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="formCheck">
+                                <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
+                            </div>
+                            <div class="forgot">
+                                <small><a href="#">Forgot Password?</a></small>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                        </div>
+                    
+                    </form>
                     <div class="input-group mb-3">
                         <button class="btn btn-lg btn-light w-100 fs-6">
                             <img src="google.png" style="width:20px" class="me-2"><small>Sign In with Google</small>
                         </button>
                     </div>
                     <div class="row">
-                        <small>Don't have an account? <a href="register.html">Register Here</a></small>
+                        <small>Don't have an account? <a href="/user_administration/register/">Register Here</a></small>
                     </div>
                 </div>
             </div> 
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const loginButton = document.querySelector(".btn-primary"); // Select the login button
-            loginButton.addEventListener("click", (event) => {
-                event.preventDefault(); // Prevent form submission if using a form
-                const email = document.querySelector('input[placeholder="Email address"]').value;
-                const password = document.querySelector('input[placeholder="Password"]').value;
-    
-                // Replace this with your actual login validation logic
-                if (email === "test@example.com" && password === "password123") {
-                    localStorage.setItem('isLoggedIn', 'true');
-                    alert("Login successful!");
-                    window.location.href = "dashboard.html"; // Redirect to another page
-                } else {
-                    alert("Invalid email or password.");
-                }
-            });
-        });
-    </script>
     
 </body>
 </html>
