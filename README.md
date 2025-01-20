@@ -11,7 +11,7 @@ Key Steps in the Project:
 
 1.Dataset Understanding and Preprocessing:
 
-UNSW-NB15 Dataset: A modern dataset with labeled records for normal and malicious network traffic, designed for evaluating IDS models.
+KDD Cup Dataset: A modern dataset with labeled records for normal and malicious network traffic, designed for evaluating IDS models.
 Features: The dataset contains 49 features, including protocol, service, flow duration, and statistical metrics.
 Classes: Includes both benign traffic and various attack categories (e.g., DoS, fuzzers, backdoors, exploits).
 Preprocessing involves:
