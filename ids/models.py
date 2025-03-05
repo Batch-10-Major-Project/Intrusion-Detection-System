@@ -1,12 +1,12 @@
-import random
-from django.contrib.auth.models import User
+import pyotp
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class OTPVerification(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    otp = models.CharField(max_length=6, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+class CustomUser(AbstractUser):
+    two_factor_secret = models.CharField(max_length=100, blank=True, null=True)
 
-    def generate_otp(self):
-        self.otp = str(random.randint(100000, 999999))  # Generate 6-digit OTP
-        self.save()
+    def generate_otp_secret(self):
+        """Generate and save a new OTP secret for the user."""
+        if not self.two_factor_secret:
+            self.two_factor_secret = pyotp.random_base32()
+            self.save()
