@@ -92,7 +92,7 @@ def login_view(request):
 
 @login_required(login_url='/user_administration/login/')
 def home(request):
-    return render(request, 'index1.html')
+    return render(request, 'home.html')
     
 @login_required(login_url='/user_administration/login/')
 def about(request):
