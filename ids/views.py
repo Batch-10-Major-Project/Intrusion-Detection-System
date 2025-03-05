@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from .models import OTPVerification
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -48,6 +49,26 @@ def send_otp(request):
         return redirect("verify_otp")
     
     return render(request, "signup.html")
+def verify_otp(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        entered_otp = request.POST.get("otp")
+
+        try:
+            user = User.objects.get(email=email)
+            otp_instance = OTPVerification.objects.get(user=user)
+
+            if otp_instance.otp == entered_otp:
+                user.is_active = True  # Activate user after OTP verification
+                user.save()
+                return redirect("login")
+            else:
+                return HttpResponse("Invalid OTP!")
+
+        except (User.DoesNotExist, OTPVerification.DoesNotExist):
+            return HttpResponse("User not found!")
+
+    return render(request, "verify_otp.html")
 
 @csrf_exempt
 def user_login(request):
