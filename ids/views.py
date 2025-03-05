@@ -33,7 +33,7 @@ def send_otp(request):
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
-            return render(request, "signup.html", {"error": "User not found!"})
+            return render(request, "register.html", {"error": "User not found!"})
 
         otp_instance, created = OTPVerification.objects.get_or_create(user=user)
         otp_instance.generate_otp()
@@ -48,7 +48,7 @@ def send_otp(request):
 
         return redirect("verify_otp")
     
-    return render(request, "signup.html")
+    return render(request, "register.html")
 def verify_otp(request):
     if request.method == "POST":
         email = request.POST.get("email")
