@@ -75,6 +75,19 @@ def verify_otp(request):
             return HttpResponse("Invalid OTP! Please try again.")
 
     return render(request, "verify_otp.html")
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            request.session["pre_otp_user"] = user.id  # Store user ID temporarily
+            return redirect("qr_code")  # Redirect to 2FA page
+        else:
+            return HttpResponse("Invalid username or password!")
+
+    return render(request, "login.html")
 
 
 @login_required(login_url='/user_administration/login/')
