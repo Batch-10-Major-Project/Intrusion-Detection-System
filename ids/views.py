@@ -1,3 +1,8 @@
+import random
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+from .models import OTPVerification
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -20,6 +25,29 @@ def register(request):
             user.save()
 
     return render(request, 'register.html')
+def send_otp(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return render(request, "signup.html", {"error": "User not found!"})
+
+        otp_instance, created = OTPVerification.objects.get_or_create(user=user)
+        otp_instance.generate_otp()
+
+        send_mail(
+            "Your OTP Code",
+            f"Your OTP code is {otp_instance.otp}",
+            "your-email@example.com",
+            [email],
+            fail_silently=False,
+        )
+
+        return redirect("verify_otp")
+    
+    return render(request, "signup.html")
 
 @csrf_exempt
 def user_login(request):
