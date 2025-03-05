@@ -1,12 +1,15 @@
 import random
+import pyotp
+import qrcode
+import io
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import OTPVerification
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from .models import CustomUser
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -26,50 +29,8 @@ def register(request):
             user.save()
 
     return render(request, 'register.html')
-def send_otp(request):
-    if request.method == "POST":
-        email = request.POST.get("email")
 
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            return render(request, "register.html", {"error": "User not found!"})
-
-        otp_instance, created = OTPVerification.objects.get_or_create(user=user)
-        otp_instance.generate_otp()
-
-        send_mail(
-            "Your OTP Code",
-            f"Your OTP code is {otp_instance.otp}",
-            "your-email@example.com",
-            [email],
-            fail_silently=False,
-        )
-
-        return redirect("verify_otp")
-    
-    return render(request, "register.html")
-def verify_otp(request):
-    if request.method == "POST":
-        email = request.POST.get("email")
-        entered_otp = request.POST.get("otp")
-
-        try:
-            user = User.objects.get(email=email)
-            otp_instance = OTPVerification.objects.get(user=user)
-
-            if otp_instance.otp == entered_otp:
-                user.is_active = True  # Activate user after OTP verification
-                user.save()
-                return redirect("login")
-            else:
-                return HttpResponse("Invalid OTP!")
-
-        except (User.DoesNotExist, OTPVerification.DoesNotExist):
-            return HttpResponse("User not found!")
-
-    return render(request, "verify_otp.html")
-
+   
 @csrf_exempt
 def user_login(request):
     if request.method == "POST":
@@ -82,6 +43,24 @@ def user_login(request):
             return redirect('/home')
 
     return render(request, 'login1.html')
+@login_required
+def generate_qr(request):
+    user = request.user
+    if not user.two_factor_secret:
+        user.generate_otp_secret()  # Generate a new secret if not set
+
+    # Generate OTP URI for Google Authenticator
+    otp_uri = pyotp.totp.TOTP(user.two_factor_secret).provisioning_uri(
+        user.email, issuer_name="IDS Project"
+    )
+
+    # Generate QR code
+    qr = qrcode.make(otp_uri)
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    return HttpResponse(buffer.getvalue(), content_type="image/png")
 
 
 @login_required(login_url='/user_administration/login/')
