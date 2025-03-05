@@ -61,6 +61,20 @@ def generate_qr(request):
     buffer.seek(0)
 
     return HttpResponse(buffer.getvalue(), content_type="image/png")
+@login_required
+def verify_otp(request):
+    if request.method == "POST":
+        entered_otp = request.POST.get("otp")
+        user = request.user
+
+        totp = pyotp.TOTP(user.two_factor_secret)
+        if totp.verify(entered_otp):
+            login(request, user)  # Log in user after successful OTP
+            return redirect("dashboard")  # Redirect to the main page
+        else:
+            return HttpResponse("Invalid OTP! Please try again.")
+
+    return render(request, "verify_otp.html")
 
 
 @login_required(login_url='/user_administration/login/')
