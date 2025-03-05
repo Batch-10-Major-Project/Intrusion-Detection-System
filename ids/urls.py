@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from .views import send_otp, verify_otp
+from .views import login_view, generate_qr, verify_otp
 
 
 urlpatterns = [
@@ -28,6 +28,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contactus/', views.contactus, name='contactus'),
     path('prediction/', views.prediction, name='prediction')
-    path("send-otp/", send_otp, name="send_otp"),
+    path("login/", login_view, name="login"),
+    path("2fa-setup/", generate_qr, name="qr_code"),
     path("verify-otp/", verify_otp, name="verify_otp"),
 ]
