@@ -87,7 +87,7 @@ def login_view(request):
         else:
             return HttpResponse("Invalid username or password!")
 
-    return render(request, "login.html")
+    return render(request, "login1.html")
 
 
 @login_required(login_url='/user_administration/login/')
